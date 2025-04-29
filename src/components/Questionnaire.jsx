@@ -1,7 +1,8 @@
-const matchedFund = () => {
-    if (!showResult) return null;
-    const riskTolerance = answers[2]; // Use Risk Tolerance for now
-    const fund = fundMatches[riskTolerance];
+const Questionnaire = ({ answers, showResult }) => {
+    // if (!showResult) return null;
+    // const riskTolerance = answers[2]; // Use Risk Tolerance for now
+    const fund = { name: "Sample Fund", description: "This is a test fund." };
+  
   
     if (!fund) {
       return <p>No matching fund found. Please try different answers.</p>;
@@ -14,4 +15,7 @@ const matchedFund = () => {
       </div>
     );
   };
+
+  export default Questionnaire;
+
   
