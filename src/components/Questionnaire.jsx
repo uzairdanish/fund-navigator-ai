@@ -1,4 +1,4 @@
-import fundMatches from '../data/fundMatches';
+import { fundMatches } from '../data/fundMatches';
 const Questionnaire = ({ answers, setAnswers, showResult, setShowResult }) => {
   const riskTolerance = answers[2]; // still assumes third answer is risk tolerance
   const fund = fundMatches[riskTolerance];
