@@ -1,97 +1,180 @@
-/* Questionnaire.css */
+/* ─────────────────────────────────────────────────────────────────────────────
+   Questionnaire.css — Apple-inspired Results Page Redesign
+───────────────────────────────────────────────────────────────────────────── */
 
-/* —————————————————————————————
-   Questionnaire container
-————————————————————————————————— */
-.questionnaire-container {
+/* theme variables */
+:root {
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --primary: #0C3C60;     /* Picton-Mahoney deep blue */
+  --accent: #E63946;      /* red accent */
+  --bg: #f5f5f7;          /* very light grey */
+  --card-bg: #ffffff;     /* white card background */
+  --text: #1c1c1e;        /* primary text */
+  --muted: #6e6e73;       /* secondary text */
+  --border: #d1d1d6;      /* subtle border */
+  --shadow: rgba(0,0,0,0.08);
+}
+
+/* page reset */
+body {
+  margin: 0;
+  padding: 2rem;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* container */
+.quiz-container {
   max-width: 600px;
-  margin: 2rem auto;
-  padding: 1rem;
+  margin: 0 auto;
 }
 
-/* —————————————————————————————
-   Each question
-————————————————————————————————— */
-.question {
-  margin-bottom: 1.5rem;
+/* ── RESULTS HEADER ───────────────────────────────────────────────────────── */
+.results-header {
+  text-align: center;
+  margin-bottom: 2rem;
 }
-.question label {
-  display: block;
-  margin-bottom: .5rem;
-  font-weight: 500;
+.results-header h2 {
+  margin: 0;
+  font-size: 1.875rem;
+  font-weight: 600;
+  color: var(--text);
 }
-.question select {
-  width: 100%;
-  padding: .5rem;
+.results-header p {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
   font-size: 1rem;
 }
 
-/* —————————————————————————————
-   Submit button
-————————————————————————————————— */
-.submit-btn {
-  display: block;
-  margin: 2rem auto 0;    /* more space above */
-  padding: 1rem 2rem;     /* bigger hit area */
-  font-size: 1rem;        /* larger text */
+/* ── FUND CARD ────────────────────────────────────────────────────────────── */
+.fund-card {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px var(--shadow);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+.fund-card .badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.75rem;
   font-weight: 600;
-  background-color: #2c5282; /* feel free to adjust */
-  color: white;
-  border: none;
-  border-radius: 6px;     /* softer corners */
-  cursor: pointer;
-  transition: opacity .2s ease;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
 }
-.submit-btn:hover {
-  opacity: 0.9;
+.fund-card h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
 }
-
-/* —————————————————————————————
-   Reset (“Start Over”) button
-————————————————————————————————— */
-.start-over-btn {
+.fund-card p {
+  margin: 0.75rem 0 1.5rem;
+  color: var(--muted);
+}
+.fund-card .view-btn {
   display: inline-block;
-  margin-top: 1.5rem;     /* more breathing room */
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
   font-weight: 600;
-  background-color: #e53e3e;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color .2s ease;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  transition: box-shadow 0.2s;
 }
-.start-over-btn:hover {
-  background-color: #c53030;
+.fund-card .view-btn:hover {
+  box-shadow: 0 4px 12px var(--shadow);
 }
 
-/* —————————————————————————————
-   No-match message
-————————————————————————————————— */
-.no-match {
-  color: #c53030;
-  font-weight: 500;
-  margin-top: 1.5rem;
+/* ── DOCUMENTS SECTION ────────────────────────────────────────────────────── */
+.docs-section h4 {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--text);
 }
-
-/* —— Documentation section —— */
-.docs-section {
-  margin-top: 1.5rem;
-}
-.docs-section h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  color: #003663;
-}
-.doc-list {
+.docs-list {
   list-style: none;
   padding: 0;
+  margin: 0 0 1rem;
 }
-.doc-list li {
-  margin-bottom: 0.4rem;
+.docs-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
 }
-.doc-list a {
+.docs-list li:last-child {
+  margin-bottom: 0;
+}
+.docs-list .icon {
+  font-size: 1.25rem;
+  margin-right: 0.75rem;
+  color: var(--primary);
+}
+.docs-list a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+.docs-list a:hover {
   text-decoration: underline;
-  color: #0067b8;
+}
+.docs-section small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* ── NEXT ACTIONS ROW ────────────────────────────────────────────────────── */
+.next-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.next-actions button {
+  flex: 1;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.next-actions button:hover {
+  background: rgba(0,0,0,0.03);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ── FOOTER ──────────────────────────────────────────────────────────────── */
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin-top: 2rem;
+}
+.footer .start-over-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 0.875rem;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+.footer .start-over-btn:hover {
+  color: var(--text);
+}
+.footer .logo {
+  height: 24px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
 }
