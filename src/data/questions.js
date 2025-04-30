@@ -16,3 +16,5 @@ export const questions = [
     options: ["Low", "Medium", "High"]
   }
 ];
+
+export default questions;
