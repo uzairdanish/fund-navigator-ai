@@ -491,3 +491,56 @@ body {
 .submit-btn {
   margin-top: 1.5rem;
 }
+/* ---------------------------------- */
+/* 4. Next Actions (CTA row)          */
+/* ---------------------------------- */
+.cta-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.cta-card {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: 
+    box-shadow 200ms ease, 
+    transform 200ms ease,
+    border-color 200ms ease;
+}
+
+.cta-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+  border-color: #0C3C60;    /* deep blue highlight */
+}
+
+/* ---------------------------------- */
+/* Radio button styling (Apple-ish)   */
+/* ---------------------------------- */
+.quiz-form input[type="radio"] {
+  accent-color: #0C3C60;   /* Picton Mahoney deep blue */
+  width: 1.25em;
+  height: 1.25em;
+  margin-right: 0.5em;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.quiz-form input[type="radio"]:hover {
+  transform: scale(1.1);
+}
+
+.quiz-form label {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 1.5rem;
+  font-size: 1rem;
+}
