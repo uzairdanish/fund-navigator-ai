@@ -1,115 +1,97 @@
-/* overall quiz form */
-.quiz-form {
+/* Questionnaire.css */
+
+/* —————————————————————————————
+   Questionnaire container
+————————————————————————————————— */
+.questionnaire-container {
   max-width: 600px;
   margin: 2rem auto;
-  padding: 1.5rem;
-  background: #fff;
-  border-radius: .5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  font-family: sans-serif;
+  padding: 1rem;
 }
 
-/* progress bar text */
-.progress {
-  font-size: .9rem;
-  color: #555;
-  margin-bottom: 1rem;
-}
-
-/* each question block */
-.quiz-form fieldset {
-  border: none;
+/* —————————————————————————————
+   Each question
+————————————————————————————————— */
+.question {
   margin-bottom: 1.5rem;
-  opacity: 1;
-  transition: opacity .2s;
 }
-
-/* disable future questions */
-.quiz-form fieldset[disabled] {
-  opacity: 0.5;
-}
-
-/* question text */
-.quiz-form legend {
-  font-size: 1.1rem;
+.question label {
+  display: block;
   margin-bottom: .5rem;
   font-weight: 500;
 }
-
-/* options layout */
-.options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .75rem;
+.question select {
+  width: 100%;
+  padding: .5rem;
+  font-size: 1rem;
 }
 
-.options label {
-  display: flex;
-  align-items: center;
-  gap: .3rem;
-  font-size: .95rem;
-}
-
-/* submit button */
+/* —————————————————————————————
+   Submit button
+————————————————————————————————— */
 .submit-btn {
   display: block;
-  margin: 1rem auto 0;
-  padding: .6rem 1.2rem;
-  background: #004165;
-  color: #fff;
+  margin: 2rem auto 0;    /* more space above */
+  padding: 1rem 2rem;     /* bigger hit area */
+  font-size: 1rem;        /* larger text */
+  font-weight: 600;
+  background-color: #2c5282; /* feel free to adjust */
+  color: white;
   border: none;
-  border-radius: 4px;
-  font-size: .95rem;
+  border-radius: 6px;     /* softer corners */
   cursor: pointer;
+  transition: opacity .2s ease;
+}
+.submit-btn:hover {
+  opacity: 0.9;
 }
 
-.submit-btn:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
-
-/* result card */
-.result-card {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background: #fff;
-  border-radius: .5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.result-card h2 {
-  margin-top: 0;
-  color: #004165;
-}
-
-.result-card a {
-  display: inline-block;
-  margin: 1rem 0;
-  color: #004165;
-  text-decoration: underline;
-}
-
-/* reset/no-match */
+/* —————————————————————————————
+   Reset (“Start Over”) button
+————————————————————————————————— */
 .start-over-btn {
   display: inline-block;
-  margin-top: 1rem;
-  padding: .5rem 1rem;
-  background: #e53e3e;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.start-over-btn:hover {
-  background: #c53030;
-}
-
-.no-match {
-  max-width: 600px;
-  margin: 2rem auto;
+  margin-top: 1.5rem;     /* more breathing room */
+  padding: 0.75rem 1.5rem;
   font-size: 1rem;
+  font-weight: 600;
+  background-color: #e53e3e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color .2s ease;
+}
+.start-over-btn:hover {
+  background-color: #c53030;
+}
+
+/* —————————————————————————————
+   No-match message
+————————————————————————————————— */
+.no-match {
   color: #c53030;
-  text-align: center;
+  font-weight: 500;
+  margin-top: 1.5rem;
+}
+
+/* —— Documentation section —— */
+.docs-section {
+  margin-top: 1.5rem;
+}
+.docs-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #003663;
+}
+.doc-list {
+  list-style: none;
+  padding: 0;
+}
+.doc-list li {
+  margin-bottom: 0.4rem;
+}
+.doc-list a {
+  text-decoration: underline;
+  color: #0067b8;
 }

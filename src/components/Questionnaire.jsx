@@ -2,6 +2,7 @@ import React from 'react'
 import questions from '../data/questions'
 import { fundMatches } from '../data/fundMatches'
 import './Questionnaire.css'
+import documents from '../data/documents'
 
 const Questionnaire = ({ answers, setAnswers, showResult, setShowResult }) => {
   // update one answer in the array
@@ -39,6 +40,7 @@ const Questionnaire = ({ answers, setAnswers, showResult, setShowResult }) => {
         </div>
       )
     }
+  
     return (
       <div className="result-card">
         <h2>{fund.name}</h2>
@@ -46,6 +48,30 @@ const Questionnaire = ({ answers, setAnswers, showResult, setShowResult }) => {
         <a href={fund.url} target="_blank" rel="noopener">
           Learn more
         </a>
+  
+        {/* —— Related Documentation —— */}
+        <div className="docs-section">
+          <h3>Related Documentation</h3>
+          <ul className="doc-list">
+            {documents.map(doc => (
+              <li key={doc.url}>
+                <a
+                  href={`https://www.pictonmahoney.com${doc.url}`}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {doc.name || doc.url
+                    .replace('/documentation/', '')
+                    .replace(/-/g, ' ')
+                    .replace(/\//g, '')
+                    .trim()
+                  }
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+  
         <button className="start-over-btn" onClick={handleReset}>
           Start Over
         </button>

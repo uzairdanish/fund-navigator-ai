@@ -1,10 +1,9 @@
-import { useState } from 'react';
-import Questionnaire from './components/Questionnaire';
+import { useState } from 'react'
+import Questionnaire from './components/Questionnaire'
 
 function App() {
-  // one answer per question
-  const [answers, setAnswers] = useState(Array(3).fill(''));
-  const [showResult, setShowResult] = useState(false);
+  const [answers, setAnswers] = useState([])
+  const [showResult, setShowResult] = useState(false)
 
   return (
     <div className="App">
@@ -16,7 +15,7 @@ function App() {
         setShowResult={setShowResult}
       />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
