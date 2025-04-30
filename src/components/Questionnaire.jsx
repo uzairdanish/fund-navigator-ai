@@ -1,94 +1,88 @@
-import React from 'react';
-import questions from '../data/questions';
-import { fundMatches } from '../data/fundMatches';
-import './Questionnaire.css';    // ← this line loads all of your Questionnaire styles
+import React from 'react'
+import questions from '../data/questions'
+import { fundMatches } from '../data/fundMatches'
+import './Questionnaire.css'
 
 const Questionnaire = ({ answers, setAnswers, showResult, setShowResult }) => {
-  // update a single answer
+  // update one answer in the array
   const handleAnswer = (index, value) => {
-    const next = [...answers];
-    next[index] = value;
-    setAnswers(next);
-  };
+    const next = [...answers]
+    next[index] = value
+    setAnswers(next)
+  }
 
-  // submit quiz
+  // when you hit Submit
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setShowResult(true);
-  };
+    e.preventDefault()
+    setShowResult(true)
+  }
 
-  // reset everything
+  // reset everything to start again
   const handleReset = () => {
-    setAnswers([]);
-    setShowResult(false);
-  };
+    setAnswers([])
+    setShowResult(false)
+  }
 
-  // show the result card
+  // figure out your fund
+  const chosen = questions.find(q => q.id === 'risk')
+  const riskAnswer = answers[questions.length - 1]
+  const fund = fundMatches[riskAnswer]
+
   if (showResult) {
-    const risk = answers[2];               // your risk‐tolerance is Q3
-    const fund = fundMatches[risk];
-
     if (!fund) {
       return (
-        <div className="result-card">
-          <p className="no-match">
-            No matching fund found.<br/>
-            Please go back and try different answers.
-          </p>
+        <div className="no-match">
+          No matching fund found. Please try different answers.
           <button className="start-over-btn" onClick={handleReset}>
             Start Over
           </button>
         </div>
-      );
+      )
     }
-
     return (
       <div className="result-card">
-        <h2 className="fund-name">{fund.name}</h2>
-        <p className="fund-desc">{fund.description}</p>
-        <a
-          className="learn-more"
-          href={fund.url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <h2>{fund.name}</h2>
+        <p>{fund.description}</p>
+        <a href={fund.url} target="_blank" rel="noopener">
           Learn more
         </a>
         <button className="start-over-btn" onClick={handleReset}>
           Start Over
         </button>
       </div>
-    );
+    )
   }
 
-  // otherwise, render the quiz form
   return (
-    <form className="questionnaire-form" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="quiz-form">
+      <div className="progress">
+        Question {answers.filter(a => a != null).length + 1} of {questions.length}
+      </div>
       {questions.map((q, i) => (
-        <div key={i} className="question-block">
-          <label className="question-label">{q.text}</label>
-          <select
-            className="question-select"
-            value={answers[i] || ''}
-            onChange={(e) => handleAnswer(i, e.target.value)}
-            required
-          >
-            <option value="" disabled>
-              Choose…
-            </option>
-            {q.options.map((opt) => (
-              <option key={opt} value={opt}>
+        <fieldset key={q.id} disabled={i !== answers.filter(a => a != null).length}>
+          <legend>{q.text}</legend>
+          <div className="options">
+            {q.options.map(opt => (
+              <label key={opt}>
+                <input
+                  type="radio"
+                  name={q.id}
+                  value={opt}
+                  checked={answers[i] === opt}
+                  onChange={() => handleAnswer(i, opt)}
+                  required
+                />
                 {opt}
-              </option>
+              </label>
             ))}
-          </select>
-        </div>
+          </div>
+        </fieldset>
       ))}
-      <button type="submit" className="submit-btn">
+      <button type="submit" disabled={answers.length < questions.length} className="submit-btn">
         Submit
       </button>
     </form>
-  );
-};
+  )
+}
 
-export default Questionnaire;
+export default Questionnaire
