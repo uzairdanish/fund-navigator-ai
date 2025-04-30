@@ -1,7 +1,7 @@
 import React from 'react';
 import questions from '../data/questions';
 import { fundMatches } from '../data/fundMatches';
-import './Questionnaire.css';    // ← your new CSS import
++import './Questionnaire.css';    // ← this line loads all of your Questionnaire styles
 
 const Questionnaire = ({ answers, setAnswers, showResult, setShowResult }) => {
   // update a single answer
