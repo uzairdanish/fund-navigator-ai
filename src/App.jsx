@@ -8,7 +8,12 @@ function App() {
   return (
     <div className="App">
       <h1>Fund Navigator AI</h1>
-      <Questionnaire answers={answers} showResult={showResult} />
+      <Questionnaire
+        answers={answers}
+        setAnswers={setAnswers}
+        showResult={showResult}
+        setShowResult={setShowResult}
+      />
     </div>
   );
 }
